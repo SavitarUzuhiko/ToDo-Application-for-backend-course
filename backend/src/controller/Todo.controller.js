@@ -25,7 +25,7 @@ class TodoController {
         .limit(page ? pageSize : 0);
 
       if (page) {
-        return res.status(200).json({ todos, total });
+        return res.status(200).json({ todos, total , page:pageNumber, pageSize });
       } else {
         return res.status(200).json(todos);
       }

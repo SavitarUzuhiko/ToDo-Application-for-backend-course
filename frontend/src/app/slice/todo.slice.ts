@@ -7,10 +7,17 @@ type initialStateType = {
   visible?: boolean;
   query?: string;
   page?: number;
+  total?: number;
 };
 
 const initialState: initialStateType = {
+  _id: "",
+  query: "",
   visible: false,
+  page: 1,
+  total: 0,
+  title: "",
+  completed: "",
 };
 
 export const todoSlice = createSlice({

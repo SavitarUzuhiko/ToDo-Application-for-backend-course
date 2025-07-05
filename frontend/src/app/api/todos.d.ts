@@ -6,4 +6,6 @@ export type TodoType = {
 export type TodosResponse = {
   todos: Todo[];
   total: number;
+  page: number;
+  pageSize: number;
 }

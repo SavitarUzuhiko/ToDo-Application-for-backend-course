@@ -3,16 +3,25 @@ import { useGetTodosQuery } from './app/api/todos.api';
 import Panel from './components/Panel';
 import Todo from './components/Todo';
 import SetTodo from './components/SetTodo';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from './app/state';
+import { PaginationExample } from './components/Pagination';
 
 const App = () => {
   const [theme, setTheme] = React.useState<'' | 'dark'>('');
-  const {visible , query, completed} = useSelector((state: RootState) => state.TodoReducer);
-  const { data: todos, isLoading, isError, isSuccess , refetch} = useGetTodosQuery({page: 1, searchQuery: query, completed});
+  const { visible, query, completed, page } = useSelector(
+    (state: RootState) => state.TodoReducer
+  );
+  const dispatch = useDispatch();
+  const { data: todos, isLoading, isError, isSuccess, refetch } =
+    useGetTodosQuery({ page, searchQuery: query, completed });
 
-  if(isSuccess)
-    console.log('todos', todos);
+  React.useEffect(() => {
+    if (isSuccess) {
+      dispatch({ type: 'Todo Slice/setVisible', payload: { page: todos?.page, total: todos?.total } });
+    }
+  }, [isSuccess, todos, dispatch]);
+
   return (
     <div className={`${theme} bg-background`}>
       <div
@@ -25,17 +34,18 @@ const App = () => {
         <Panel theme={theme} refetch={refetch} setTheme={setTheme} />
         {isLoading && <p className='text-center'>Loading...</p>}
         {isError && <p className='text-center'>Error is </p>}
-        
+
         <div className='p-5'>
-          {todos?.todos?.map((todo) => (
+          {todos?.todos.map((todo) => (
             <Todo key={todo._id} refetch={refetch} todo={todo} />
           ))}
         </div>
-        
-      {visible ? <SetTodo refetch={refetch} /> : null}
+        {todos &&todos.total > 10  && <PaginationExample />}
+        {visible ? <SetTodo refetch={refetch} /> : null}
       </div>
     </div>
   );
 };
 
 export default App;
+

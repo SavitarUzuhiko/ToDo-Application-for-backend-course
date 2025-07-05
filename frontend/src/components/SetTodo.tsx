@@ -1,12 +1,12 @@
 import { useUpdateTodoMutation } from '@/app/api/todos.api';
-import { setVisible } from '@/app/slice/todo.slice';
+import { setVisible} from '@/app/slice/todo.slice';
 import type { AppDispatch, RootState } from '@/app/state';
 import { useDispatch, useSelector } from 'react-redux';
 
 const SetTodo = ({refetch}:{refetch: () => void}) => {
+  const { _id, title } = useSelector((state: RootState) => state.TodoReducer);
   const [updateTodo] = useUpdateTodoMutation();
   const dispatch = useDispatch<AppDispatch>();
-  const { _id, title } = useSelector((state: RootState) => state.TodoReducer);
   return (
     <div className='fixed top-0 left-0 w-full h-full bg-black/50 flex items-center justify-center z-50'>
       <form className='bg-white p-5 rounded-lg w-[500px] h-[300px] flex flex-col gap-4'>
@@ -19,13 +19,7 @@ const SetTodo = ({refetch}:{refetch: () => void}) => {
           defaultValue={title}
           onChange={(e) => {
             e.preventDefault();
-            dispatch(
-              setVisible({
-                title: e.target.value,
-                visible: true,
-                _id: String(_id),
-              })
-            );
+            dispatch(setVisible({ visible: true, _id, title: e.target.value, completed: '' , page: 1, total: 0}));
           }}
           className='border-2 border-primary px-3 py-2 rounded-lg text-xl focus:ring-3 focus:ring-primary/50 outline-none'
         />
@@ -43,7 +37,7 @@ const SetTodo = ({refetch}:{refetch: () => void}) => {
             className='border-1 border-primary text-xl rounded-md bg-primary text-white font-semibold px-4 py-1.5'
             onClick={(e) => {
               e.preventDefault();
-              updateTodo({ id: String(_id), title: title });
+              updateTodo({ id: String(_id), title });
               dispatch(setVisible({ visible: false }));
               refetch();
             }}
@@ -57,3 +51,4 @@ const SetTodo = ({refetch}:{refetch: () => void}) => {
 };
 
 export default SetTodo;
+
