@@ -1,4 +1,5 @@
-# 📝 Todo App
+# 📝 Todo App 
+## Created by Savitar Uzuhiko
 
 A simple and intuitive Todo application designed to help you manage your tasks and stay organized efficiently. This project features a full-stack architecture with a React-based frontend and a Node.js backend.
 
