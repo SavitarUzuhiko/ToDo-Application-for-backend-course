@@ -11,7 +11,7 @@ A simple and intuitive Todo application designed to help you manage your tasks a
 
 | Main Page                                                                                    | Completed Tasks                                                                                     |
 | :-------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------: |
-| ![Main Page Screenshot](https://via.placeholder.com/400x300.png?text=Main+Page) | ![Completed Tasks Screenshot](https://via.placeholder.com/400x300.png?text=Completed+Tasks) |
+| ![Main Page Screenshot](https://ibb.co/Z6MGS00V) | ![Completed Tasks Screenshot](https://ibb.co/cKYS9HCT) | ![Incompleted Tasks Screenshot](https://ibb.co/gZb272Gs) |
 
 ## ✨ Core Features
 
