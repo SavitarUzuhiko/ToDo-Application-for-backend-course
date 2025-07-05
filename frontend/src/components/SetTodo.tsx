@@ -1,11 +1,14 @@
-import { useUpdateTodoMutation } from '@/app/api/todos.api';
 import { setVisible} from '@/app/slice/todo.slice';
 import type { AppDispatch, RootState } from '@/app/state';
 import { useDispatch, useSelector } from 'react-redux';
 
-const SetTodo = ({refetch}:{refetch: () => void}) => {
+interface SetTodoProps {
+  refetch?: () => void;
+  update?: (args: { id: string; title: string }) => void;
+}
+
+const SetTodo = ({refetch, update}:SetTodoProps) => {
   const { _id, title } = useSelector((state: RootState) => state.TodoReducer);
-  const [updateTodo] = useUpdateTodoMutation();
   const dispatch = useDispatch<AppDispatch>();
   return (
     <div className='fixed top-0 left-0 w-full h-full bg-black/50 flex items-center justify-center z-50'>
@@ -19,7 +22,7 @@ const SetTodo = ({refetch}:{refetch: () => void}) => {
           defaultValue={title}
           onChange={(e) => {
             e.preventDefault();
-            dispatch(setVisible({ visible: true, _id, title: e.target.value, completed: '' , page: 1, total: 0}));
+            dispatch(setVisible({ visible: true, _id, title: e.target.value, page: 1, total: 0}));
           }}
           className='border-2 border-primary px-3 py-2 rounded-lg text-xl focus:ring-3 focus:ring-primary/50 outline-none'
         />
@@ -37,9 +40,11 @@ const SetTodo = ({refetch}:{refetch: () => void}) => {
             className='border-1 border-primary text-xl rounded-md bg-primary text-white font-semibold px-4 py-1.5'
             onClick={(e) => {
               e.preventDefault();
-              updateTodo({ id: String(_id), title });
+              if(title && _id && update) {
+                update({ id: String(_id), title });
+              }
               dispatch(setVisible({ visible: false }));
-              refetch();
+              if(refetch) refetch();
             }}
           >
             Apply

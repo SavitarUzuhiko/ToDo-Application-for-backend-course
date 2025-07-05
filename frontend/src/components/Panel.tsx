@@ -12,14 +12,15 @@ interface Props {
   refetch: () => void;
 }
 
-const Panel = ({ theme, setTheme ,refetch}: Props) => {
+const Panel = ({ theme, setTheme, refetch }: Props) => {
   const searchInput = React.useRef<HTMLInputElement | null>(null);
   const dispatch = useDispatch();
   const [inputFocused, setInputFocused] = React.useState(false);
+
   const handleSearch = () => {
     if (searchInput.current) {
       const query = searchInput.current.value;
-      dispatch(setQuery(query))
+      dispatch(setQuery(query));
       console.log('Searching for:', query);
     }
   };
@@ -41,6 +42,7 @@ const Panel = ({ theme, setTheme ,refetch}: Props) => {
           type='text'
           className='text-xl font-semibold dark:text-white text-primary flex-1 outline-none rounded bg-transparent'
           placeholder='Search note...'
+          onChange={() => {if(searchInput.current?.value === '') dispatch(setQuery(''))}}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
               handleSearch();
@@ -59,7 +61,10 @@ const Panel = ({ theme, setTheme ,refetch}: Props) => {
         className='border-2 border-primary rounded-lg px-2 py-1.5 text-lg text-light w-40 dark:text-secondary-foreground uppercase bg-primary focus:bg-primary/90'
         onFocus={() => setInputFocused(true)}
         onBlur={() => setInputFocused(false)}
-        onChange={(e) => {dispatch(setCompleted(e.target.value)); refetch();}}
+        onChange={async (e) => {
+          await dispatch(setCompleted(e.target.value));
+          refetch();
+        }}
       >
         <option
           className='capitalize bg-light text-primary font-semibold'
@@ -69,7 +74,7 @@ const Panel = ({ theme, setTheme ,refetch}: Props) => {
         </option>
         <option
           className='capitalize bg-light hover:bg-primary/90 text-primary font-semibold'
-          value={'true'}
+          value='true'
         >
           Completed
         </option>
@@ -82,9 +87,9 @@ const Panel = ({ theme, setTheme ,refetch}: Props) => {
       </select>
       <Toggle
         className='bg-primary hover:bg-primary/80 text-secondary dark:bg-primary hover:dark:bg-primary/80 h-11 w-11 rounded-lg'
-        size={'default'}
+        size='default'
         onClick={() => setTheme(theme === '' ? 'dark' : '')}
-        aria-label='Toggle italic'
+        aria-label='Toggle theme'
       >
         {theme ? <Sun /> : <Moon />}
       </Toggle>
@@ -93,3 +98,4 @@ const Panel = ({ theme, setTheme ,refetch}: Props) => {
 };
 
 export default Panel;
+
