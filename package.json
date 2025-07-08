@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/index.js",
+    "dev": "concurrently \"nodemon backend/index.js\" \"cd frontend && vite --port 3000 --open\""
+    
+  },
+  "keywords": [],
+  "author": "Savitar Uzuhiko",
+  "license": "ISC",
+  "description": "Simple Todo App",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.0.1",
+    "express": "^5.1.0",
+    "mongoose": "^8.16.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "nodemon": "^3.1.10"
+  }
+}

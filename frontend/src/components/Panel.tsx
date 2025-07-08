@@ -42,12 +42,7 @@ const Panel = ({ theme, setTheme, refetch }: Props) => {
           type='text'
           className='text-xl font-semibold dark:text-white text-primary flex-1 outline-none rounded bg-transparent'
           placeholder='Search note...'
-          onChange={() => {if(searchInput.current?.value === '') dispatch(setQuery(''))}}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              handleSearch();
-            }
-          }}
+          onChange={handleSearch}
         />
         <button onClick={handleSearch}>
           {theme ? (
