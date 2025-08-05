@@ -9,11 +9,17 @@ A simple and intuitive Todo application designed to help you manage your tasks a
 ## 📸 Screenshots
 
 *It's highly recommended to add screenshots of your application here to give users a quick visual overview.*
+<<<<<<< HEAD
 
 | Main | Complete | Incomplete |
 |:----:|:--------:|:----------:|
 | ![Main](https://ik.imagekit.io/savitaruzuhiko/Screenshot%202025-07-05%20133737.png?updatedAt=1751705072478) | ![Completed](https://ik.imagekit.io/savitaruzuhiko/Screenshot%202025-07-05%20133750.png?updatedAt=1751705164526) | ![Incomplete](https://ik.imagekit.io/savitaruzuhiko/Screenshot%202025-07-05%20133757.png?updatedAt=1751705164639) |
 
+=======
+| Main | Complete | Incomplete |
+|:----:|:--------:|:----------:|
+| ![Main](https://ik.imagekit.io/savitaruzuhiko/Screenshot%202025-07-05%20133737.png?updatedAt=1751705072478) | ![Completed](https://ik.imagekit.io/savitaruzuhiko/Screenshot%202025-07-05%20133750.png?updatedAt=1751705164526) | ![Incomplete](https://ik.imagekit.io/savitaruzuhiko/Screenshot%202025-07-05%20133757.png?updatedAt=1751705164639) |
+>>>>>>> 1f50c913d9b8e6d25173a11af338578e1a573bda
 
 ## ✨ Core Features
 
