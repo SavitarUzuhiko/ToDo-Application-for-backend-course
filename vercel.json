@@ -1,7 +1,5 @@
 {
-  "buildCommand": "npm install && npm run build",
-  "installCommand": "npm run ins",
-  "outputDirectory": "dist",
+  "outputDirectory": "./backend/dist",
   "rewrites": [
     {
       "source": "/api/(.*)",
