@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node backend/index.js",
     "dev": "concurrently \"nodemon backend/index.js\" \"cd frontend && vite --port 3000 --open\"",
-    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
+    "ins": "npm install && npm install --prefix frontend",
+    "build": "npm run build --prefix frontend"
   },
   "keywords": [],
   "author": "Savitar Uzuhiko",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "concurrently": "^9.2.0",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "typescript": "^5.9.2"
   }
 }
