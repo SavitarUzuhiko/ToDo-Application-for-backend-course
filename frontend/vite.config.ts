@@ -1,19 +1,23 @@
-import path from "path"
-import tailwindcss from "@tailwindcss/vite"
-import react from "@vitejs/plugin-react"
-import { defineConfig } from "vite"
+import path from 'path';
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
+import tailwindcss from '@tailwindcss/vite';
 
-// https://vite.dev/config/
+// Vite konfiguratsiyasi
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [react(),tailwindcss()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      '@': path.resolve(__dirname, './src'),
     },
   },
   server: {
     proxy: {
-      '/api': 'http://localhost:5000'
-    }
-  }
-})
+      '/api': 'http://localhost:5000',
+    },
+  },
+  build: {
+    outDir: '../backend/public', // frontend build -> backend/public
+    emptyOutDir: true,
+  },
+});

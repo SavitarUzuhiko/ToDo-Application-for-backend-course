@@ -9,11 +9,9 @@ import {
   PaginationPrevious,
 } from './ui/pagination';
 import type { RootState } from '@/app/state';
-import { useGetTodosQuery } from '@/app/api/todos.api';
 
 export function PaginationExample() {
   const { page, total } = useSelector((state: RootState) => state.TodoReducer);
-  const { data: todos } = useGetTodosQuery({ page });
   const dispatch = useDispatch();
   if (page === undefined || total === undefined) return null;
   return (

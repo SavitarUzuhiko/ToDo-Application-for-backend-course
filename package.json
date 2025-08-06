@@ -5,11 +5,11 @@
   "scripts": {
     "start": "node backend/index.js",
     "dev": "concurrently \"nodemon backend/index.js\" \"cd frontend && vite --port 3000 --open\"",
-    "build": 
-    
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": [],
   "author": "Savitar Uzuhiko",
+  "type": "commonjs",
   "license": "ISC",
   "description": "Simple Todo App",
   "dependencies": {

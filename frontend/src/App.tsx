@@ -17,7 +17,7 @@ const App = () => {
   );
   const dispatch = useDispatch();
   const { data: todos, isLoading, isError, isSuccess, refetch } =
-    useGetTodosQuery({ page, searchQuery: query, completed });
+    useGetTodosQuery({ page, searchQuery: query, completed:completed as string });
 
   
     const [updateTodo] = useUpdateTodoMutation();
