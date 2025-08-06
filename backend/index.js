@@ -15,9 +15,9 @@ app.use('/api/todos', todoRouter);
 console.log(__dirName);
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirName,'backend', 'public')));
+  app.use(express.static(path.join(__dirName,'frontend', 'dist')));
   app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirName,'backend', 'public', 'index.html'));
+    res.sendFile(path.resolve(__dirName,'frontend', 'dist', 'index.html'));
   });
 }
 
