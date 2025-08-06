@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node backend/index.js",
-    "dev": "concurrently \"nodemon backend/index.js\" \"cd frontend && vite --port 3000 --open\"",
-    "ins": "npm install && npm install --prefix frontend",
-    "build": "npm run build --prefix frontend"
+    "start": "node index.js",
+    "dev": "concurrently \"nodemon backend/index.js\" \"cd frontend && vite --port 3000 --open\""
   },
   "keywords": [],
   "author": "Savitar Uzuhiko",
